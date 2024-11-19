@@ -1,13 +1,42 @@
 #include "../general.h"
 
-string Day1_Part1(stringstream& input)
+int Day1_Part1(stringstream& input)
 {
-	return "Not implemented yet";
+	std::string in = input.str();
+
+	int sum = 0;
+
+	for (int i = 1; i < in.size(); i++)
+	{
+		if (in[i - 1] == in[i])
+		{
+			sum += in[i] - '0';
+		}
+	}
+	if(in[0] == in[in.size() -1])
+		sum += in[in.size() - 1] - '0';
+
+	return sum;
 }
 
-string Day1_Part2(stringstream& input)
+int Day1_Part2(stringstream& input)
 {
-	return "Not implemented yet";
+	std::string in = input.str();
+
+	int sum = 0;
+	const int half = in.size()/2;
+
+	for (int i = 0; i < in.size(); i++)
+	{
+		int latter = (i + half) % in.size();
+
+		if (in[i] == in[latter])
+		{
+			sum += in[i] - '0';
+		}
+	}
+
+	return sum; //1240 too high
 }
 
 
