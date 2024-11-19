@@ -1,13 +1,59 @@
 #include "../general.h"
+#include <set>
 
-string Day4_Part1(stringstream& input)
+int Day4_Part1(stringstream& input)
 {
-	return "Not implemented yet";
+	int sum = 0;
+
+	while (!input.eof())
+	{
+		std::string sline;
+		getline(input, sline);
+		std::stringstream line(sline);
+
+		int count = 0;
+		std::set<std::string> words;
+		while (!line.eof())
+		{
+			std::string passphrase;
+			line >> passphrase;
+			count++;
+			words.insert(passphrase);
+		}
+
+		if (words.size() == count)
+			sum++;
+	}
+	return sum;
 }
 
-string Day4_Part2(stringstream& input)
+int Day4_Part2(stringstream& input)
 {
-	return "Not implemented yet";
+	int sum = 0;
+
+	while (!input.eof())
+	{
+		std::string sline;
+		getline(input, sline);
+		std::stringstream line(sline);
+
+		int count = 0;
+		std::set<std::string> words;
+		while (!line.eof())
+		{
+			std::string passphrase;
+			line >> passphrase;
+			count++;
+
+			sort(passphrase.begin(), passphrase.end());
+
+			words.insert(passphrase);
+		}
+
+		if (words.size() == count)
+			sum++;
+	}
+	return sum;
 }
 
 
