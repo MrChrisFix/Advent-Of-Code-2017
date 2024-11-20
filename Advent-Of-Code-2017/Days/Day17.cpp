@@ -1,13 +1,40 @@
 #include "../general.h"
 
-string Day17_Part1(stringstream& input)
+int Day17_Part1(stringstream& input)
 {
-	return "Not implemented yet";
+	std::vector<int> spin = { 0 };
+
+	int steps = stoi(input.str());
+
+	int curPos = 0;
+	for (int i = 0; i < 2017; i++)
+	{
+		curPos = (curPos + steps) % spin.size();
+		spin.insert(spin.begin() + curPos+1, i + 1);
+		curPos++;
+	}
+
+	return spin[(curPos+1)%spin.size()];
 }
 
-string Day17_Part2(stringstream& input)
+int Day17_Part2(stringstream& input)
 {
-	return "Not implemented yet";
+	std::vector<int> spin = { 0 };
+
+	int steps = stoi(input.str());
+
+	int curPos = 0;
+	int secondValue = 0;
+
+	for (int i = 0; i < 50000000; i++)
+	{
+		curPos = (curPos + steps) % (i+1);
+		if (curPos == 0)
+			secondValue = i + 1;
+		curPos++;
+	}
+
+	return secondValue;
 }
 
 
